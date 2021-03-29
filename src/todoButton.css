@@ -1,0 +1,10 @@
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedSecondary {
+  border-radius: 30px;
+  padding: 0;
+  margin: 0;
+  font-weight: 200;
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+
+}
