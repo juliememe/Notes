@@ -18,16 +18,15 @@ function App() {
 
   const handleSubmit = () => {
     console.log("im here");
-    setSavedNote([...savedNote, {id, noteTitle, noteDescription}]);
+    setSavedNote( [{ id, noteTitle, noteDescription }, ...savedNote]);
     setId(id + 1);
     console.log(id);
-    console.log(savedNote, 'savedNote');
+    console.log(savedNote, "savedNote");
     setModalActive(false);
     setNoteTitle("");
     setNoteDescription("");
     // e.preventDefault();
   };
-//  console.log(savedNote, 'all notes')
   const handleDescriptionChange = (e) => {
     setNoteDescription(e.target.value);
     // console.log(e.target.value);
@@ -41,7 +40,7 @@ function App() {
   return (
     <div className="todo__wrapper">
       <SearchPanel />
-      <NoteList savedNote={savedNote}/>
+      <NoteList savedNote={savedNote} />
 
       <TodoButton buttonName="+" handleClick={() => setModalActive(true)} />
 

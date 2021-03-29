@@ -28,11 +28,11 @@ export default function NoteList({savedNote}) {
     
 // } ;
 
-  
+
 
   return (
     <div className="notes__wrapper">
-        {savedNote.map(elem =>
+        {savedNote.reverse().map(elem =>
 
       <div className="notes" key={elem.id}>
         <div className="notes__title">{elem.noteTitle}</div>
