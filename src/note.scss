@@ -10,7 +10,8 @@
     transform: scale(0);
 
 }
-.overlay.active{
+
+.overlay.active {
     transform: scale(1);
 }
 
@@ -41,14 +42,17 @@
     }
 
     &__description {
-        border: none;
-        /* min-height: 50px; */
+        width: 100%;
         display: flex;
         align-items: flex-start;
         padding: 5px 10px;
         margin-bottom: 15px;
-
+        word-wrap: normal;
         outline: none;
+        min-width: 375px;
+        max-width: 95%;
+        resize: vertical;
+        border: none;
     }
 
 
@@ -59,9 +63,7 @@
         border: none;
         outline: none;
 
-
     }
-
 
 }
 
@@ -79,6 +81,7 @@ input.button {
         margin-right: 10px;
         transition: 0.5s;
         outline: none;
+        cursor: pointer;
 
     }
 

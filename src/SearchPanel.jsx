@@ -8,11 +8,13 @@ export default function SearchPanel() {
   const doSomethingWith = () => console.log(value);
 
   return (
+    <div className="search__panel"> 
     <SearchBar
       value={value}
       onChange={(newValue) => setValue(newValue)}
       onRequestSearch={() => doSomethingWith(value)}
       cancelOnEscape={true}
     />
+    </div>
   );
 }

@@ -1,0 +1,46 @@
+.notes__wrapper {
+    width: 45%;
+    border: 0.5px solid grey;
+}
+
+.notes {
+    padding: 5px 0;
+    &__title {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 600;
+
+    }
+
+    &__description {
+        padding: 10px;
+        font-size: 16px;
+        
+    }
+}
+
+.delete-button__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 0;
+}
+
+.MuiSvgIcon-root.delete-button {
+    width: 25px;
+    height: 25px;
+    
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-text{
+    padding: 0;
+    margin: 0;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-text{
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    width: 25px;
+    height: 35px;
+    min-width: 40px;
+    margin-right: 10px;
+    padding: 0;
+
+}

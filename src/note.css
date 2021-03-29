@@ -46,8 +46,7 @@
 }
 
 .note__description {
-  border: none;
-  /* min-height: 50px; */
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,7 +55,12 @@
           align-items: flex-start;
   padding: 5px 10px;
   margin-bottom: 15px;
+  word-wrap: normal;
   outline: none;
+  min-width: 375px;
+  max-width: 95%;
+  resize: vertical;
+  border: none;
 }
 
 .note__buttons {
@@ -85,6 +89,7 @@ input.button__create, input.button__close {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
+  cursor: pointer;
 }
 
 input.button__create {
@@ -106,4 +111,4 @@ input.button__create:active, input.button__close:active {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-/*# sourceMappingURL=todoNote.css.map */
+/*# sourceMappingURL=note.css.map */
