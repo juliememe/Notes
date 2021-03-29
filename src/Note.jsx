@@ -10,6 +10,7 @@ export default function Note({
   noteTitle,
   descriptionValue,
   handleSubmit,
+  warning,
 }) {
   return (
     <div
@@ -21,19 +22,35 @@ export default function Note({
           type="text"
           placeholder="Введите заголовок"
           value={noteTitle}
-          className="note__title"
+          className={
+            noteTitle.length > 30 || warning === true
+              ? "note__title warning"
+              : "note__title"
+          }
           name="title"
           onChange={handleTitleOnChange}
         />
+        {noteTitle.length > 30 ? (
+          <div style={{ fontSize: "12px", color: "red", paddingLeft: "10px" }}>
+            Длина заголовка не должна превышать 30 символов!
+          </div>
+        ) : null}
         <textarea
           placeholder="Текст заметки"
-          className="note__description"
+          className={
+            warning ? "note__description  warning" : "note__description"
+          }
           value={descriptionValue}
           name="description"
           onChange={handleDescriptionChange}
           width="200px"
           resize="none"
         />
+        {warning === true ? (
+          <div style={{ fontSize: "12px", color: "red", paddingLeft: "10px" }}>
+            Оба поля не могут быть пустыми!
+          </div>
+        ) : null}
         <div className="note__buttons">
           <input
             type="button"

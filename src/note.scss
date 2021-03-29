@@ -49,7 +49,7 @@
         margin-bottom: 15px;
         word-wrap: normal;
         outline: none;
-        min-width: 375px;
+        min-width: 350px;
         max-width: 95%;
         resize: vertical;
         border: none;
@@ -107,4 +107,10 @@ input.button {
         transition: 0.3s;
 
     }
+}
+
+.warning {
+    border-bottom: 0.5px solid #a13c60;
+    color: #a13c60;
+    padding-bottom: 0;
 }

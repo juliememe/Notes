@@ -11,30 +11,31 @@ function App() {
   const [noteDescription, setNoteDescription] = useState("");
   const [id, setId] = useState(0);
   const [savedNote, setSavedNote] = useState([]);
-
-  // useEffect(() => {
-  //   setSavedNote({ ...savedNote, key: { id }, noteTitle, descriptionValue });
-  // }, [noteTitle, descriptionValue]);
+  const [warning, setWarning] = useState(false);
 
   const handleSubmit = () => {
-    console.log("im here");
-    setSavedNote( [{ id, noteTitle, noteDescription }, ...savedNote]);
+    if (
+      (noteTitle.trim() === "" || noteTitle.length > 30) &&
+      noteDescription.trim() === ""
+    ) {
+      setWarning(true);
+      return null;
+    }
+    setSavedNote([{ id, noteTitle, noteDescription }, ...savedNote]);
     setId(id + 1);
-    console.log(id);
-    console.log(savedNote, "savedNote");
     setModalActive(false);
     setNoteTitle("");
     setNoteDescription("");
-    // e.preventDefault();
   };
+
   const handleDescriptionChange = (e) => {
     setNoteDescription(e.target.value);
-    // console.log(e.target.value);
+    setWarning(false);
   };
 
   const handleTitleOnChange = (e) => {
     setNoteTitle(e.target.value);
-    // console.log(e.target.value);
+    setWarning(false);
   };
 
   return (
@@ -53,6 +54,7 @@ function App() {
         descriptionValue={noteDescription}
         noteTitle={noteTitle}
         handleSubmit={handleSubmit}
+        warning={warning}
       />
     </div>
   );
