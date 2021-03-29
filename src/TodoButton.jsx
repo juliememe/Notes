@@ -5,7 +5,7 @@ import './todoButton.css';
 export default function TodoButton({handleClick, buttonName}) {
 
   return (
-    <Button variant="contained" color="secondary" onclick={handleClick}>
+    <Button variant="contained" color="secondary" onClick={handleClick}>
      {buttonName}
     </Button>
   );
