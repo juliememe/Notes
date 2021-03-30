@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import TodoButton from "./TodoButton";
 import "./App.css";
-import SearchPanel from "./SearchPanel";
 import Note from "./Note";
 import NoteList from "./NoteList";
+import SearchPanel from "./SearchPanel";
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -12,6 +12,9 @@ function App() {
   const [id, setId] = useState(0);
   const [savedNote, setSavedNote] = useState([]);
   const [warning, setWarning] = useState(false);
+  const [confirmWindow, setConfirmWindow] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  // const [searchedNotes, setSearchedNotes] = useState([]);
 
   const handleSubmit = () => {
     if (
@@ -38,10 +41,30 @@ function App() {
     setWarning(false);
   };
 
+
+  const handleSearchClick = () => {
+    if (searchValue === "") return null;
+    if (savedNote.length === 0) return setSearchValue("");
+    let currentList = savedNote.slice();
+
+   let   newAr =currentList.filter(({noteTitle, noteDescription}) => 
+     noteTitle.toLowerCase().includes(searchValue.toLowerCase()) 
+     ||noteDescription.toLowerCase().includes(searchValue.toLowerCase()) );
+
+    setSearchValue("");
+  };
+
   return (
-    <div className="todo__wrapper">
-      <SearchPanel />
-      <NoteList savedNote={savedNote} />
+    <div className="note-wrapper">
+      <SearchPanel
+        handleSearchClick={handleSearchClick}
+        searchValue={searchValue}
+        onChange={(e) => setSearchValue((e.target.value).toLowerCase())}
+      />
+      <NoteList
+        savedNote={savedNote}
+        handleDeleteClick={() => setConfirmWindow(true)}
+      />
 
       <TodoButton buttonName="+" handleClick={() => setModalActive(true)} />
 
@@ -56,6 +79,7 @@ function App() {
         handleSubmit={handleSubmit}
         warning={warning}
       />
+      
     </div>
   );
 }
