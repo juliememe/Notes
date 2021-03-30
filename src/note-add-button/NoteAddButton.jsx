@@ -1,12 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import './todoButton.css';
+import "./note-add-button.css";
 
-export default function TodoButton({handleClick, buttonName}) {
-
+export default function NoteAddButton({ handleClick, buttonName }) {
   return (
     <Button variant="contained" color="secondary" onClick={handleClick}>
-     {buttonName}
+      {buttonName}
     </Button>
   );
 }

@@ -1,8 +1,13 @@
 import React from "react";
-import "./note.scss";
-import './confirm-delete-note.scss';
+import "../note/note.css";
+import "./delete-modal-window.scss";
 
-export default function ConfirmDeleteNote({ confirmWindow, handleCancelDelete, handleDeleteConfirm, itemId}) {
+export default function DeleteModalWindow({
+  confirmWindow,
+  handleCancelDelete,
+  handleDeleteConfirm,
+  itemId,
+}) {
   return (
     <div
       className={confirmWindow ? "overlay active" : "overlay"}
@@ -13,10 +18,18 @@ export default function ConfirmDeleteNote({ confirmWindow, handleCancelDelete, h
           Вы точно хотите удалить эту заметку?
         </div>
         <div className="confirm__buttons">
-          <button className="confirm__buttons-yes" type="button" onClick={()=>handleDeleteConfirm({itemId})}>
+          <button
+            className="confirm__buttons-yes"
+            type="button"
+            onClick={() => handleDeleteConfirm({ itemId })}
+          >
             Подтвердить
           </button>
-          <button className="confirm__buttons-no" type="button" onClick={handleCancelDelete}>
+          <button
+            className="confirm__buttons-no"
+            type="button"
+            onClick={handleCancelDelete}
+          >
             Отменить
           </button>
         </div>

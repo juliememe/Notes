@@ -7,7 +7,7 @@ export default function SearchPanel({
   handleSearchClick,
   onChange,
   searchValue,
-  handleCloseButton
+  handleCloseButton,
 }) {
   return (
     <div className="search-panel">
@@ -26,7 +26,11 @@ export default function SearchPanel({
           onChange={onChange}
           value={searchValue}
         />
-        <button type="button" className="close-button" onClick={handleCloseButton}>
+        <button
+          type="button"
+          className="close-button"
+          onClick={handleCloseButton}
+        >
           <Close />
         </button>
       </form>
