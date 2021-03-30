@@ -14,7 +14,7 @@ function App() {
   const [warning, setWarning] = useState(false);
   const [confirmWindow, setConfirmWindow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  // const [searchedNotes, setSearchedNotes] = useState([]);
+  const [tempData, setTempData] = useState([]);
 
   const handleSubmit = () => {
     if (
@@ -41,17 +41,26 @@ function App() {
     setWarning(false);
   };
 
-
   const handleSearchClick = () => {
     if (searchValue === "") return null;
     if (savedNote.length === 0) return setSearchValue("");
     let currentList = savedNote.slice();
+    console.log(savedNote, "old");
 
-   let   newAr =currentList.filter(({noteTitle, noteDescription}) => 
-     noteTitle.toLowerCase().includes(searchValue.toLowerCase()) 
-     ||noteDescription.toLowerCase().includes(searchValue.toLowerCase()) );
+    let newAr = currentList.filter(
+      ({ noteTitle, noteDescription }) =>
+        noteTitle.toLowerCase().includes(searchValue.toLowerCase()) ||
+        noteDescription.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    let tempArr = savedNote.slice();
+    setTempData(tempArr);
+    setSavedNote(newAr);
+    console.log(newAr, "new");
+  };
 
+  const handleCloseButton = () => {
     setSearchValue("");
+    setSavedNote(tempData);
   };
 
   return (
@@ -59,7 +68,8 @@ function App() {
       <SearchPanel
         handleSearchClick={handleSearchClick}
         searchValue={searchValue}
-        onChange={(e) => setSearchValue((e.target.value).toLowerCase())}
+        onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
+        handleCloseButton={handleCloseButton}
       />
       <NoteList
         savedNote={savedNote}
@@ -79,7 +89,6 @@ function App() {
         handleSubmit={handleSubmit}
         warning={warning}
       />
-      
     </div>
   );
 }

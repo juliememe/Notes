@@ -4,30 +4,11 @@ import "./note-list.scss";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { Button } from "@material-ui/core";
 
-export default function NoteList({ savedNote }) {
-  // console.log(savedNote, 'NOTE LIST')
-  //   const createNoteList = () => {
-  // return <div>{savedNote.noteTitle}</div>
-  //       if (savedNote !== undefined){
-
-  //           return (
-  //               <div className="notes">
-  //       <div className="notes__title"></div>
-  //       <div className="notes__description">e.description</div>
-  //       <div className="delete-button__wrapper">
-  //         <Button>
-  //           <DeleteForeverIcon className="delete-button" />
-  //         </Button>
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
-  // } ;
+export default function NoteList({ savedNote, handleDeleteClick }) {
 
   return (
     <div className="notes__wrapper">
-      {savedNote.reverse().map((elem) => (
+      {savedNote.map((elem) => (
         <div className="notes" key={elem.id}>
           {elem.noteTitle !== "" ? (
             <div className="notes__title">{elem.noteTitle}</div>
@@ -36,7 +17,7 @@ export default function NoteList({ savedNote }) {
             <div className="notes__description">{elem.noteDescription}</div>
           ) : null}
           <div className="delete-button__wrapper">
-            <Button>
+            <Button onClick={handleDeleteClick}>
               <DeleteForeverIcon className="delete-button" />
             </Button>
           </div>
