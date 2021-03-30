@@ -6,10 +6,12 @@ import { Button } from "@material-ui/core";
 
 export default function NoteList({ savedNote, handleDeleteClick }) {
 
+
+
   return (
-    <div className="notes__wrapper">
+    <ul className="notes__wrapper">
       {savedNote.map((elem) => (
-        <div className="notes" key={elem.id}>
+        <li className="notes" key={elem.id} id={elem.id}>
           {elem.noteTitle !== "" ? (
             <div className="notes__title">{elem.noteTitle}</div>
           ) : null}
@@ -17,12 +19,12 @@ export default function NoteList({ savedNote, handleDeleteClick }) {
             <div className="notes__description">{elem.noteDescription}</div>
           ) : null}
           <div className="delete-button__wrapper">
-            <Button onClick={handleDeleteClick}>
+            <Button onClick={()=>handleDeleteClick(elem.id)} id={elem.id} >
               <DeleteForeverIcon className="delete-button" />
             </Button>
           </div>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

@@ -36,15 +36,45 @@
   border: none;
 }
 
-.search-icon {
-  background-color: transparent;
-}
-
-button {
+.search-button {
   background-color: transparent;
   border: none;
   margin-right: 10px;
   margin-left: 5px;
   outline: none;
+  opacity: 0.6;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.search-button:hover {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.search-icon {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.close-button {
+  margin-right: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.close-button:hover {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 /*# sourceMappingURL=search-panel.css.map */

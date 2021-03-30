@@ -4,6 +4,7 @@ import "./App.css";
 import Note from "./Note";
 import NoteList from "./NoteList";
 import SearchPanel from "./SearchPanel";
+import ConfirmDeleteNote from "./ConfirmDeleteNote";
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -15,6 +16,7 @@ function App() {
   const [confirmWindow, setConfirmWindow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [tempData, setTempData] = useState([]);
+  const [currentItem, setCurrentItem] = useState(null);
 
   const handleSubmit = () => {
     if (
@@ -63,6 +65,20 @@ function App() {
     setSavedNote(tempData);
   };
 
+  const handleDeleteConfirm = () => {
+    let newAr = savedNote.slice();
+    const filteredArray = newAr.filter(({id}) => id !== currentItem);
+    console.log(filteredArray);
+    setSavedNote(filteredArray);
+
+  };
+
+  const handleDeleteClick = (itemId) => {
+    setConfirmWindow(true);
+    setCurrentItem(itemId);
+    console.log(itemId);
+  };
+
   return (
     <div className="note-wrapper">
       <SearchPanel
@@ -73,7 +89,9 @@ function App() {
       />
       <NoteList
         savedNote={savedNote}
-        handleDeleteClick={() => setConfirmWindow(true)}
+        handleDeleteClick={handleDeleteClick}
+        // handleDeleteClick={() => setConfirmWindow(true)}
+        // updateCurrentItem={updateCurrentItem}
       />
 
       <TodoButton buttonName="+" handleClick={() => setModalActive(true)} />
@@ -88,6 +106,11 @@ function App() {
         noteTitle={noteTitle}
         handleSubmit={handleSubmit}
         warning={warning}
+      />
+      <ConfirmDeleteNote
+        confirmWindow={confirmWindow}
+        handleCancelDelete={() => setConfirmWindow(false)}
+        handleDeleteConfirm={handleDeleteConfirm}
       />
     </div>
   );

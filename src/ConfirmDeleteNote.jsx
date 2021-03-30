@@ -1,23 +1,24 @@
 import React from "react";
 import "./note.scss";
+import './confirm-delete-note.scss';
 
-export default function ConfirmDeleteNote({ confirmWindow, setConfirmWindow }) {
+export default function ConfirmDeleteNote({ confirmWindow, handleCancelDelete, handleDeleteConfirm, itemId}) {
   return (
     <div
       className={confirmWindow ? "overlay active" : "overlay"}
-      onClick={() => setConfirmWindow(false)}
+      onClick={handleCancelDelete}
     >
       <div className="confirm__wrapper">
         <div className="confirm__title">
           Вы точно хотите удалить эту заметку?
         </div>
         <div className="confirm__buttons">
-          <input className="confirm__buttons-yes" type="button">
+          <button className="confirm__buttons-yes" type="button" onClick={()=>handleDeleteConfirm({itemId})}>
             Подтвердить
-          </input>
-          <input className="confirm__buttons-no" type="button">
+          </button>
+          <button className="confirm__buttons-no" type="button" onClick={handleCancelDelete}>
             Отменить
-          </input>
+          </button>
         </div>
       </div>
     </div>
